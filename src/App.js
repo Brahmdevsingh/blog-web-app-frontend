@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hey Capgemini Project
+          Hey there Capgemini Project
         </a>
       </header>
     </div>
