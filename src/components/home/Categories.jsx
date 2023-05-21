@@ -10,7 +10,7 @@ border: 1px solid rgba(224,224,224,1);
 const StyledButton = styled(Button)`
 margin:20px;
 widht:85%;
-background:#6495ED;
+background: linear-gradient(to right, #FF5F6D, #FFC371);
 color:#fff;
 `;
 

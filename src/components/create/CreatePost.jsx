@@ -5,9 +5,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { DataContext } from "../../context/DataProvider";
 import { API } from "../../service/api";
 
-const Container = styled(Box)`
-  margin : 50px 100px
-  `;
+const Container = styled(Box)(({ theme }) => ({
+    margin: '50px 100px',
+    [theme.breakpoints.down('md')]: {
+        margin: 0
+    }
+}));
 
 const Image = styled('img')({
     width: '100%',
@@ -43,7 +46,7 @@ const initialPost = {
     picture: '',
     username: '',
     categories: '',
-    createDate: new Date()
+    createdDate: new Date()
 }
 
 const CreatePost = () => {

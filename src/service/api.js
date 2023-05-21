@@ -2,7 +2,8 @@ import axios from 'axios';
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from '../constants/config';
 import { getAccessToken, getType } from '../utils/common-utils';
 
-const API_URL = 'http://localhost:8000';
+// const API_URL = 'http://localhost:8000'
+const API_URL = 'https://backend-blog-web-app.onrender.com';
 const axiosInstance = axios.create({
 
     baseURL: API_URL,
@@ -89,7 +90,7 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
         axiosInstance({
             method: value.method,
             url: value.url,
-            data: body,
+            data: value.method === 'DELETE' ? '' : body,
             responseType: value.responseType,
             headers: {
                 authorization: getAccessToken(),

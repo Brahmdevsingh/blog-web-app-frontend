@@ -4,11 +4,17 @@ import { addElipsis } from '../../../utils/common-utils';
 const Container = styled(Box)`
     border: 1px solid #d3cede;
     border-radius: 10px;
+    box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
     margin: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
+    transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
     & > img, & > p {
         padding: 0 5px 5px 5px;
     }

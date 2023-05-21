@@ -1,14 +1,18 @@
-import { Box, TextField, Button, styled, Typography } from '@mui/material';
+import { Box, TextField, Button, styled, Typography, Paper } from '@mui/material';
 import { useState, useContext } from 'react';
 import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 import { useNavigate } from 'react-router-dom';
 
-const Component = styled(Box)`
-    width: 400px;
-    margin: auto;
-    background-color: rgba(217, 210, 233, 0.5);
-    box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
+
+const Component = styled(Paper)`
+  width: 400px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 5px 2px 5px 2px rgba(0, 0, 0, 0.6);
+
 `;
 
 const Image = styled('img')({
@@ -19,7 +23,7 @@ const Image = styled('img')({
 });
 
 const Imageb = styled(Box)`
-  background: url('https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80');
+  background: url("https://images.unsplash.com/photo-1620207418302-439b387441b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1267&q=80");
   background-repeat : no-repeat;
   background-attachement : fixed;
   background-size : 100% 100%;
@@ -45,10 +49,10 @@ const Wrapper = styled(Box)`
 
 const LoginButton = styled(Button)`
 text-transform: none;
-background: #FB641B;
+background: #0b0b69;
 color: #fff;
 height: 48px;
-border-radius: 2px;
+border-radius: 24px;
 `
 
 const SignupButton = styled(Button)`
@@ -56,7 +60,7 @@ text-transform: none;
 background: #fff;
 color: #2874f0;
 height: 48px;
-border-radius: 2px;
+border-radius: 24px;
 box-shadow: 0 2px 4px 0 rgb(0 0 0/20%);
 `
 const Error = styled(Typography)`

@@ -1,13 +1,20 @@
 import { Box, Typography, styled } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { API } from '../../service/api';
 import { Edit, Delete } from '@mui/icons-material';
 import { DataContext } from '../../context/DataProvider';
+//components
+import Comments from './comments/Comments';
 
-const Container = styled(Box)`
-margin : 50px 100px;
-`;
+const Container = styled(Box)(({ theme }) => ({
+    margin: '50px 100px',
+    [theme.breakpoints.down('md')]: {
+        margin: 0
+    }
+}));
+
+
 
 const Image = styled('img')({
     width: '100%',
@@ -51,6 +58,8 @@ const DetailView = () => {
 
     const { account } = useContext(DataContext);
 
+    const navigate = useNavigate();
+
     const url = post.picture ? post.picture : 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
 
     useEffect(() => {
@@ -65,6 +74,12 @@ const DetailView = () => {
         fetchData();
     }, [])
 
+    const deleteBlog = async () => {
+        let response = await API.deletePost(post._id);
+        if (response.isSuccess) {
+            navigate('/');
+        }
+    }
     return (
         <Container>
             <Image src={url} alt="blog" />
@@ -73,8 +88,8 @@ const DetailView = () => {
                 {
                     account.username === post.username &&
                     <>
-                        <EditIcon color="primary" />
-                        <DeleteIcon color="error" />
+                        <Link to={`/update/${post._id}`}><EditIcon color="primary" /></Link>
+                        <DeleteIcon onClick={() => deleteBlog()} color="error" />
                     </>
                 }
 
@@ -87,6 +102,7 @@ const DetailView = () => {
             </Author>
 
             <Description>{post.description}</Description>
+            <Comments post={post} />
         </Container>
     )
 }
